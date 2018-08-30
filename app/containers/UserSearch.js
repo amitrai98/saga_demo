@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import {View} from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
-import Counter from '../components/counter';
-import ApiTester from '../components/apiTester';
 import * as appActions from '../actions';
-import UserProfile from '../components/UserProfile';
+import User from '../components/User';
 
-class Profile extends Component {
+class SearchUser extends Component {
   constructor(props) {
     super(props);
   }
@@ -26,8 +23,8 @@ class Profile extends Component {
           {...actions}
         /> */}
 
-        <UserProfile
-         payload={state.apiProflie.payload}
+        <User
+         payload={state.apiUser.payload}
          {...actions}
         />
       </View>
@@ -48,4 +45,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchUser);

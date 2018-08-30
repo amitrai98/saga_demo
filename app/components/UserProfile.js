@@ -25,7 +25,7 @@ export default class UserProfile extends Component {
   }
 
   render() {
-    const { count, increment, decrement, incrementAsync, proflieRequest, apiMsg } = this.props;
+    const { count, increment, decrement, incrementAsync, proflieRequest, apiMsg, payload } = this.props;
     return (
       <View style={{alignItems: 'center', justifyContent: 'center'}}>
        
@@ -33,7 +33,7 @@ export default class UserProfile extends Component {
           <Text>Load</Text>
         </TouchableOpacity>
 
-        <Text>{apiMsg}</Text>
+        <Text>{payload}</Text>
 
         {/* <TouchableOpacity onPress={decrement} style={styles.button}>
           <Text>down</Text>

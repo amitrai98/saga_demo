@@ -13,6 +13,7 @@ export default function apiProflie(state = initialState, action = {}) {
         apiMsg: 'LOAD USER PROFILE API called succeeded!'
       };
       case types.API_REQUEST_SUCCEEDED:
+      console.log('payload received is '+JSON.stringify(action.data_is));
       return {
         ...state,
         apiMsg: 'API called succeeded!'

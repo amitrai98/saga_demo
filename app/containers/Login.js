@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import {View} from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as appActions from '../actions';
-import User from '../components/User';
-import UserList from './UserList';
 
-class SearchUser extends Component {
+import Counter from '../components/counter';
+import ApiTester from '../components/apiTester';
+import * as appActions from '../actions';
+import LoginComponent from '../components/LoginComponent';
+
+class Login extends Component {
   constructor(props) {
     super(props);
   }
@@ -14,7 +16,7 @@ class SearchUser extends Component {
   render() {
     const { state, actions} = this.props;
     return (
-      <View style={{alignItems: 'center', justifyContent: 'center', marginTop:60, flexDirection:'column'}}>
+      <View style={{alignItems: 'center', justifyContent: 'center', marginTop:200}}>
         {/* <Counter
           count={state.counter.count}
           {...actions}
@@ -24,16 +26,10 @@ class SearchUser extends Component {
           {...actions}
         /> */}
 
-        <User
-         payload={state.apiUser.payload}
+        <LoginComponent
+         payload={state.apiLogin.payload}
          {...actions}
         />
-        <View state={{marginTop:100}}>
-          <UserList
-            apiMsg={state.apiTester.apiMsg}
-            {...actions}
-          />
-        </View>
       </View>
     );
   }
@@ -52,4 +48,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchUser);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

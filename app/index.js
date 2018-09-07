@@ -13,6 +13,8 @@ import sagaRoot from './sagas';
 import SampleApp from './containers/sampleApp';
 import Profile from './containers/Profile';
 import UserSearch from './containers/UserSearch';
+import LoginComponent from './components/LoginComponent';
+import Login from './containers/Login';
 
 // The middlewares which will be used in this App
 const middlewares = [];
@@ -37,7 +39,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <UserSearch />
+        <Login />
       </Provider>
     );
   }

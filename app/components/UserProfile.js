@@ -35,12 +35,6 @@ export default class UserProfile extends Component {
 
         <Text>{payload}</Text>
 
-        {/* <TouchableOpacity onPress={decrement} style={styles.button}>
-          <Text>down</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={incrementAsync} style={styles.button}>
-          <Text>async up</Text>
-        </TouchableOpacity> */}
       </View>
     );
   }

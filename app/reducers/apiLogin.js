@@ -2,7 +2,12 @@ import * as types from '../actions/actionTypes';
 
 const initialState = {
   apiMsg: '',
+  data: [],
+  dataFetched: false,
+  isFetching: false,
+  error: false
 };
+
 
 export default function apiLogin(state = initialState, action = {}) {
   switch (action.type) {
@@ -10,18 +15,24 @@ export default function apiLogin(state = initialState, action = {}) {
     console.log('i was called');
       return {
         ...state,
-        apiMsg: 'LOAD USER PROFILE API called succeeded!'
+        data: [],
+        apiMsg:'received login request',
+        isFetching: true
       };
       case types.API_REQUEST_SUCCEEDED_LOGIN:
       console.log('payload received is '+JSON.stringify(action.data_is));
       return {
         ...state,
-        apiMsg: 'API called succeeded!'
+        isFetching: false,
+        apiMsg:'login success',
+        data: action.data_is
       };
     case types.API_REQUEST_FAILED_LOGIN:
       return {
         ...state,
-        apiMsg: 'API called failed!'
+        apiMsg:'login failed',
+        isFetching: false,
+        error: true
       };
     default:
       return state;

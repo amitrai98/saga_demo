@@ -17,17 +17,8 @@ class Login extends Component {
     const { state, actions} = this.props;
     return (
       <View style={{alignItems: 'center', justifyContent: 'center', marginTop:200}}>
-        {/* <Counter
-          count={state.counter.count}
-          {...actions}
-        /> */}
-        {/* <ApiTester
-          apiMsg={state.apiTester.apiMsg}
-          {...actions}
-        /> */}
-
-        <LoginComponent
-         payload={state.apiLogin.payload}
+      <LoginComponent
+         payload={state.apiLogin}
          {...actions}
         />
       </View>

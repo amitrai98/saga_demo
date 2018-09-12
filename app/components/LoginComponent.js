@@ -34,27 +34,52 @@ export default class LoginComponent extends Component {
   state={
     email:'',
     password:'',
-    loading:false,
   }
 
   attemptLogin(){
-      this.setState({loading:true})
-      this.props.LoginRequest({username: this.state.email, password: this.state.password});
 
-      setTimeout(() => {
-          this.setState({loading:false});
+    if(this.validate(this.state.email)){
+      if(this.state.password.length >0){
+        this.props.LoginRequest({username: this.state.email, password: this.state.password});
+  
+        setTimeout(() => {
+            this.setState({loading:false});
+        }, 2000);
+      }else{
+        alert('password can not be empty')
+      }
+      
+    }else{
+      alert('invalid email');
+    }
 
-      }, 2000);
+     
   }
 
+  validate = (text) => {
+    console.log(text);
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
+    if(reg.test(text) === false)
+    {
+    console.log("Email is Not Correct");
+    this.setState({email:text})
+    return false;
+      }
+    else {
+      // this.setState({email:text})
+      console.log("Email is Correct");
+      return true;
+    }
+    }
+
   render() {
-    const { count, increment, decrement, incrementAsync, LoginRequest, apiMsg, payload } = this.props;
+    const {payload, isFetching } = this.props;
     return (
       
       <View style={{flexDirection:"column", width:200, height:200}}>
-      
-      <Loader
-          loading={this.state.loading} />
+            <Loader
+        loading={payload.isFetching} />
+     
             <TextInput placeholder={"username"}
                     onChangeText={(value) => this.setState({ email: value })}
                     TextInput={"email"}
@@ -86,7 +111,7 @@ export default class LoginComponent extends Component {
             
             }}>Login</Text>
             
-            <Text style={{color:'red', backgroundColor:'blue', marginTop:40, padding:10}}>{apiMsg}</Text>
+            <Text style={{color:'white', backgroundColor:'blue', marginTop:40, padding:10}}>{payload.apiMsg}</Text>
 
         </TouchableOpacity>       
       </View>
